@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning AIOS - 智能操作系统</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F52BA', // 科技蓝为主色
+                        secondary: '#16C8FF', // 亮蓝为辅助色
+                        dark: '#0A101F', // 深空黑
+                        light: '#E6F7FF', // 浅蓝灰
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .bg-tech-gradient {
+                background: linear-gradient(135deg, #0A101F 0%, #0F52BA 100%);
+            }
+            .text-glow {
+                text-shadow: 0 0 10px rgba(22, 200, 255, 0.5);
+            }
+            .btn-tech {
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-tech::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: all 0.6s ease;
+            }
+            .btn-tech:hover::after {
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans overflow-x-hidden">
+    <!-- 顶部导航栏 -->
+    <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-primary/20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/标题 -->
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bolt-lightning text-secondary text-2xl text-glow"></i>
+                    <span class="text-xl font-bold text-white">Lightning AIOS</span>
+                </div>
+
+                <!-- 协议链接 -->
+                <nav class="flex space-x-6">
+                    <a href="https://www.kdocs.cn/l/cey996wDNXH8" target="_blank" class="text-gray-300 hover:text-secondary transition-colors duration-300 text-sm sm:text-base">
+                        用户协议
+                    </a>
+                    <a href="https://www.kdocs.cn/l/cncVVWNYCaVi" target="_blank" class="text-gray-300 hover:text-secondary transition-colors duration-300 text-sm sm:text-base">
+                        隐私协议
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心内容区 -->
+    <main class="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 bg-tech-gradient">
+        <div class="container mx-auto text-center">
+            <!-- 主标题 -->
+            <div class="mb-12 sm:mb-16">
+                <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold mb-4 text-glow">
+                    Lightning <span class="text-secondary">AIOS 1.0</span>
+                </h1>
+                <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto">
+                    轻量智能 · 极速响应 · 全场景适配的智能操作系统
+                </p>
+                <!-- 科技感装饰线 -->
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent to-secondary mx-auto mt-8 rounded-full"></div>
+            </div>
+
+            <!-- 核心功能按钮 -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
+                <!-- Lightning AIOS 1.0 按钮 -->
+                <a href="https://shequ.codemao.cn/mobile/work?workid=294078612&type=18" 
+                   target="_blank" 
+                   class="btn-tech w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-dark font-medium px-10 py-4 rounded-lg text-lg shadow-lg shadow-secondary/20">
+                    <i class="fa-solid fa-rocket mr-2"></i> 打开 Lightning AIOS 1.0
+                </a>
+
+                <!-- 作者主页按钮 -->
+                <a href="https://shequ.codemao.cn/user/16123088" 
+                   target="_blank" 
+                   class="btn-tech w-full sm:w-auto bg-transparent border-2 border-secondary hover:bg-secondary/10 text-white font-medium px-10 py-4 rounded-lg text-lg shadow-lg shadow-secondary/10">
+                    <i class="fa-solid fa-user-circle mr-2"></i> 访问作者主页
+                </a>
+            </div>
+
+            <!-- 科技感装饰元素 -->
+            <div class="mt-20 flex justify-center">
+                <div class="w-64 h-64 rounded-full bg-primary/10 blur-3xl absolute opacity-50"></div>
+                <div class="w-40 h-40 rounded-full bg-secondary/10 blur-2xl absolute opacity-70"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark border-t border-primary/20 py-8">
+        <div class="container mx-auto px-4 text-center text-gray-400 text-sm">
+            <p>© 2025 Lightning AIOS. All Rights Reserved.</p>
+            <p class="mt-2">Designed with <i class="fa-solid fa-bolt-lightning text-secondary"></i> for a smarter future</p>
+        </div>
+    </footer>
+
+    <!-- 简单的交互脚本 -->
+    <script>
+        // 滚动时导航栏效果增强
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('border-primary/30');
+                header.classList.remove('border-primary/20');
+            } else {
+                header.classList.remove('border-primary/30');
+                header.classList.add('border-primary/20');
+            }
+        });
+
+        // 按钮点击反馈
+        const buttons = document.querySelectorAll('.btn-tech');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => {
+                    this.classList.remove('scale-95');
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
