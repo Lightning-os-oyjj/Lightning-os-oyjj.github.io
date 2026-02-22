@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning AIOS - 轻量智能操作系统</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 自定义配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F62FE', // 小米澎湃OS同款科技蓝
+                        secondary: '#39B5FF', // 浅蓝高亮
+                        dark: '#0A0F1F', // 深空黑
+                        dark-light: '#141B34', // 浅一级黑
+                        neutral: '#F0F2F5', // 浅灰
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'PingFang SC', 'Helvetica Neue', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .bg-grad-tech { background: linear-gradient(180deg, #0A0F1F 0%, #142F86 100%); }
+            .border-light { border-color: rgba(255,255,255,0.1); }
+            .text-balance { text-wrap: balance; }
+            .hover-scale { transition: transform 0.3s ease; }
+            .hover-scale:hover { transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans antialiased">
+    <!-- 顶部导航 - 澎湃OS风格极简悬浮 -->
+    <header class="fixed w-full top-0 z-50 bg-dark/95 backdrop-blur-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <i class="fa-solid fa-bolt-lightning text-secondary text-xl"></i>
+                    <span class="text-lg font-semibold">Lightning AIOS</span>
+                </a>
+                <!-- 导航菜单 - 澎湃OS风格极简导航 -->
+                <nav class="hidden md:flex gap-8 text-sm">
+                    <a href="#features" class="text-gray-400 hover:text-secondary transition-colors">核心特性</a>
+                    <a href="#architecture" class="text-gray-400 hover:text-secondary transition-colors">系统架构</a>
+                    <a href="#devices" class="text-gray-400 hover:text-secondary transition-colors">设备适配</a>
+                    <a href="#updates" class="text-gray-400 hover:text-secondary transition-colors">更新日志</a>
+                    <a href="#experience" class="text-gray-400 hover:text-secondary transition-colors">体验计划</a>
+                    <a href="https://www.kdocs.cn/l/cey996wDNXH8" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">用户协议</a>
+                    <a href="https://www.kdocs.cn/l/cncVVWNYCaVi" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">隐私协议</a>
+                </nav>
+                <!-- 移动端菜单按钮 -->
+                <button id="menuBtn" class="md:hidden text-gray-400 hover:text-secondary text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-dark-light border-t border-light py-4 px-6">
+            <nav class="flex flex-col gap-4 text-sm">
+                <a href="#features" class="text-gray-400 hover:text-secondary transition-colors py-1">核心特性</a>
+                <a href="#architecture" class="text-gray-400 hover:text-secondary transition-colors py-1">系统架构</a>
+                <a href="#devices" class="text-gray-400 hover:text-secondary transition-colors py-1">设备适配</a>
+                <a href="#updates" class="text-gray-400 hover:text-secondary transition-colors py-1">更新日志</a>
+                <a href="#experience" class="text-gray-400 hover:text-secondary transition-colors py-1">体验计划</a>
+                <a href="https://www.kdocs.cn/l/cey996wDNXH8" target="_blank" class="text-gray-400 hover:text-secondary transition-colors py-1">用户协议</a>
+                <a href="https://www.kdocs.cn/l/cncVVWNYCaVi" target="_blank" class="text-gray-400 hover:text-secondary transition-colors py-1">隐私协议</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区 - 澎湃OS风格极简大气 -->
+    <section class="min-h-screen flex items-center pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-grad-tech">
+        <div class="container mx-auto text-center">
+            <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold mb-6 leading-tight text-balance">
+                Lightning <span class="text-secondary">AIOS</span>
+                <p class="text-[clamp(1.2rem,3vw,1.8rem)] font-normal text-gray-300 mt-4">轻量智能 · 万物互联 · 极致体验</p>
+            </h1>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-12">
+                面向全场景的轻量级智能操作系统，打破设备边界，让每一台设备都拥有智能核心
+            </p>
+            <!-- 核心按钮组 - 澎湃OS风格 -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <a href="https://shequ.codemao.cn/mobile/work?workid=294078612&type=18" target="_blank" 
+                   class="px-8 py-4 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover-scale">
+                    <i class="fa-solid fa-rocket mr-2"></i> 立即体验
+                </a>
+                <a href="https://shequ.codemao.cn/user/16123088" target="_blank" 
+                   class="px-8 py-4 bg-transparent border border-primary text-white rounded-lg font-medium hover:bg-primary/10 transition-colors hover-scale">
+                    <i class="fa-solid fa-user mr-2"></i> 作者主页
+                </a>
+            </div>
+            <!-- 澎湃OS风格装饰 - 极简线条 -->
+            <div class="mt-20 w-full h-1 bg-gradient-to-r from-transparent via-secondary/50 to-transparent max-w-xl mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- 核心特性 - 澎湃OS风格卡片 -->
+    <section id="features" class="py-24 px-4 sm:px-6 lg:px-8 bg-dark">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-18">核心特性</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <!-- 特性1 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-feather-pointed text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">极致轻量</h3>
+                    <p class="text-gray-400">仅占用100MB存储空间，启动速度≤1秒，适配低配设备无压力</p>
+                </div>
+                <!-- 特性2 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-brain text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI 驱动</h3>
+                    <p class="text-gray-400">内置轻量化AI引擎，智能识别场景，主动适配使用习惯</p>
+                </div>
+                <!-- 特性3 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-network-wired text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">万物互联</h3>
+                    <p class="text-gray-400">支持多设备互联互通，数据无缝流转，打破设备边界</p>
+                </div>
+                <!-- 特性4 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">安全可靠</h3>
+                    <p class="text-gray-400">多层级安全防护，数据加密传输，保障设备和信息安全</p>
+                </div>
+                <!-- 特性5 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-gears text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">模块化设计</h3>
+                    <p class="text-gray-400">按需加载功能模块，自定义系统组件，满足个性化需求</p>
+                </div>
+                <!-- 特性6 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-bolt text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">极速响应</h3>
+                    <p class="text-gray-400">操作响应延迟＜50ms，流畅度提升80%，告别卡顿等待</p>
+                </div>
+                <!-- 特性7 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-paintbrush text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">极简交互</h3>
+                    <p class="text-gray-400">无冗余界面，操作逻辑清晰，3步内完成90%核心操作</p>
+                </div>
+                <!-- 特性8 -->
+                <div class="bg-dark-light border border-light rounded-lg p-8 hover-scale">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-infinity text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">持续进化</h3>
+                    <p class="text-gray-400">OTA 增量更新，每周迭代优化，功能持续丰富完善</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 系统架构 - 澎湃OS风格分层展示 -->
+    <section id="architecture" class="py-24 px-4 sm:px-6 lg:px-8 bg-dark-light">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl font-bold text-center mb-18">系统架构</h2>
+            <!-- 分层架构图 - 澎湃OS极简风格 -->
+            <div class="flex flex-col gap-4">
+                <!-- 应用层 -->
+                <div class="bg-dark border border-light rounded-lg p-6 hover-scale">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-semibold text-secondary">应用层</h3>
+                        <span class="text-xs bg-secondary/20 text-secondary px-3 py-1 rounded-full">Application Layer</span>
+                    </div>
+                    <p class="text-gray-400">包含系统应用、第三方应用、AI 应用组件，支持多端应用无缝运行</p>
+                </div>
+                <!-- 框架层 -->
+                <div class="bg-dark border border-light rounded-lg p-6 hover-scale">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-semibold text-secondary">框架层</h3>
+                        <span class="text-xs bg-secondary/20 text-secondary px-3 py-1 rounded-full">Framework Layer</span>
+                    </div>
+                    <p class="text-gray-400">提供AI能力、网络、安全、多媒体等核心能力接口，简化应用开发</p>
+                </div>
+                <!-- 内核层 -->
+                <div class="bg-dark border border-light rounded-lg p-6 hover-scale">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-semibold text-secondary">内核层</h3>
+                        <span class="text-xs bg-secondary/20 text-secondary px-3 py-1 rounded-full">Kernel Layer</span>
+                    </div>
+                    <p class="text-gray-400">轻量化微内核，负责进程管理、内存管理、设备驱动、安全管控</p>
+                </div>
+                <!-- 硬件抽象层 -->
+                <div class="bg-dark border border-light rounded-lg p-6 hover-scale">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-semibold text-secondary">硬件抽象层</h3>
+                        <span class="text-xs bg-secondary/20 text-secondary px-3 py-1 rounded-full">HAL Layer</span>
+                    </div>
+                    <p class="text-gray-400">统一硬件接口标准，适配不同芯片、传感器、外设，降低适配成本</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设备适配 - 澎湃OS风格多设备展示 -->
+    <section id="devices" class="py-24 px-4 sm:px-6 lg:px-8 bg-dark">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-18">设备适配</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+                <!-- 手机 -->
+                <div class="bg-dark-light border border-light rounded-lg p-6 text-center hover-scale">
+                    <i class="fa-solid fa-mobile-screen-button text-secondary text-3xl mb-4"></i>
+                    <h3 class="font-semibold mb-1">智能手机</h3>
+                    <p class="text-xs text-gray-400">Android 7.0+</p>
+                </div>
+                <!-- 平板 -->
+                <div class="bg-dark-light border border-light rounded-lg p-6 text-center hover-scale">
+                    <i class="fa-solid fa-tablet-screen-button text-secondary text-3xl mb-4"></i>
+                    <h3 class="font-semibold mb-1">平板电脑</h3>
+                    <p class="text-xs text-gray-400">Android 8.0+</p>
+                </div>
+                <!-- 电脑 -->
+                <div class="bg-dark-light border border-light rounded-lg p-6 text-center hover-scale">
+                    <i class="fa-solid fa-laptop text-secondary text-3xl mb-4"></i>
+                    <h3 class="font-semibold mb-1">个人电脑</h3>
+                    <p class="text-xs text-gray-400">Windows 10+</p>
+                </div>
+                <!-- 手表 -->
+                <div class="bg-dark-light border border-light rounded-lg p-6 text-center hover-scale">
+                    <i class="fa-solid fa-clock text-secondary text-3xl mb-4"></i>
+                    <h3 class="font-semibold mb-1">智能手表</h3>
+                    <p class="text-xs text-gray-400">鸿蒙/安卓穿戴</p>
+                </div>
+                <!-- 电视 -->
+                <div class="bg-dark-light border border-light rounded-lg p-6 text-center hover-scale">
+                    <i class="fa-solid fa-tv text-secondary text-3xl mb-4"></i>
+                    <h3 class="font-semibold mb-1">智能电视</h3>
+                    <p class="text-xs text-gray-400">Android TV 9.0+</p>
+                </div>
+                <!-- 车机 -->
+                <div class="bg-dark-light border border-light rounded-lg p-6 text-center hover-scale">
+                    <i class="fa-solid fa-car text-secondary text-3xl mb-4"></i>
+                    <h3 class="font-semibold mb-1">智能车机</h3>
+                    <p class="text-xs text-gray-400">Linux/QNX</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 更新日志 - 澎湃OS风格时间轴 -->
+    <section id="updates" class="py-24 px-4 sm:px-6 lg:px-8 bg-dark-light">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-18">更新日志</h2>
+            <!-- 时间轴 -->
+            <div class="relative border-l border-light pl-8 ml-4 space-y-12">
+                <!-- 版本1.0.0 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] w-6 h-6 bg-primary rounded-full border-4 border-dark-light"></div>
+                    <h3 class="text-xl font-semibold mb-2">v1.0.0 <span class="text-sm text-gray-400 ml-2">2025.02.20</span></h3>
+                    <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                        <li>首次发布，完成核心系统框架搭建</li>
+                        <li>实现基础AI交互能力和多设备连接</li>
+                        <li>适配智能手机和平板电脑设备</li>
+                        <li>完成基础安全防护模块开发</li>
+                    </ul>
+                </div>
+                <!-- 版本0.9.0 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] w-6 h-6 bg-primary/70 rounded-full border-4 border-dark-light"></div>
+                    <h3 class="text-xl font-semibold mb-2">v0.9.0（内测） <span class="text-sm text-gray-400 ml-2">2025.01.15</span></h3>
+                    <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                        <li>完成微内核开发和基础功能验证</li>
+                        <li>实现轻量化AI引擎的基础能力</li>
+                        <li>完成首批设备适配测试</li>
+                    </ul>
+                </div>
+                <!-- 版本0.8.0 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] w-6 h-6 bg-primary/50 rounded-full border-4 border-dark-light"></div>
+                    <h3 class="text-xl font-semibold mb-2">v0.8.0（预览） <span class="text-sm text-gray-400 ml-2">2024.12.01</span></h3>
+                    <ul class="text-gray-400 space-y-2 list-disc list-inside">
+                        <li>确定系统整体架构和技术路线</li>
+                        <li>完成核心模块的技术选型</li>
+                        <li>启动首批开发和验证工作</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 查看更多 -->
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block text-secondary hover:text-secondary/80 transition-colors font-medium">
+                    查看全部更新记录 <i class="fa-solid fa-arrow-right ml-1 text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 体验计划 - 澎湃OS风格招募 -->
+    <section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 bg-dark">
+        <div class="container mx-auto max-w-3xl">
+            <div class="bg-dark-light border border-light rounded-xl p-8 md:p-12 text-center">
+                <h2 class="text-3xl font-bold mb-6">Lightning AIOS 体验计划</h2>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                    我们正在招募首批体验官，提前体验 Lightning AIOS 的最新功能，参与系统优化，为产品迭代提供宝贵建议
+                </p>
+                <!-- 体验官权益 -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                    <div class="p-4">
+                        <i class="fa-solid fa-gift text-secondary text-2xl mb-3"></i>
+                        <h3 class="font-semibold mb-1">优先体验</h3>
+                        <p class="text-xs text-gray-400">提前尝鲜新功能</p>
+                    </div>
+                    <div class="p-4">
+                        <i class="fa-solid fa-comment-dots text-secondary text-2xl mb-3"></i>
+                        <h3 class="font-semibold mb-1">专属反馈</h3>
+                        <p class="text-xs text-gray-400">直达产品开发团队</p>
+                    </div>
+                    <div class="p-4">
+                        <i class="fa-solid fa-trophy text-secondary text-2xl mb-3"></i>
+                        <h3 class="font-semibold mb-1">专属权益</h3>
+                        <p class="text-xs text-gray-400">体验官专属福利</p>
+                    </div>
+                </div>
+                <!-- 报名按钮 -->
+                <a href="https://shequ.codemao.cn/user/16123088" target="_blank" 
+                   class="inline-block px-8 py-4 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover-scale">
+                    <i class="fa-solid fa-hand-raised mr-2"></i> 立即报名
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 - 澎湃OS风格极简 -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 bg-dark-light border-t border-light">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center gap-2 mb-6 md:mb-0">
+                    <i class="fa-solid fa-bolt-lightning text-secondary text-xl"></i>
+                    <span class="text-lg font-semibold">Lightning AIOS</span>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
+                        <i class="fa-solid fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
+                        <i class="fa-solid fa-weixin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-light pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 Lightning AIOS. 保留所有权利</p>
+                <div class="mt-4 flex flex-wrap justify-center gap-4">
+                    <a href="https://www.kdocs.cn/l/cey996wDNXH8" target="_blank" class="hover:text-secondary transition-colors">用户协议</a>
+                    <a href="https://www.kdocs.cn/l/cncVVWNYCaVi" target="_blank" class="hover:text-secondary transition-colors">隐私协议</a>
+                    <a href="#" class="hover:text-secondary transition-colors">联系我们</a>
+                    <a href="#" class="hover:text-secondary transition-colors">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 交互脚本 -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                    
+                    // 滚动到目标
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('border-b', window.scrollY > 50);
+            header.classList.toggle('border-light', window.scrollY > 50);
+        });
+
+        // 返回顶部按钮（极简）
+        const backToTop = document.createElement('button');
+        backToTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+        backToTop.className = 'fixed bottom-8 right-8 bg-primary/80 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 invisible z-50';
+        document.body.appendChild(backToTop);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
